@@ -126,34 +126,6 @@ function tagdiv_woocommerce_breadcrumbs() {
     );
 }
 
-// Number of product per page 4
-add_filter('loop_shop_per_page', 'tagdiv_wc_loop_shop_per_page' );
-function tagdiv_wc_loop_shop_per_page($cols) {
-    return 4;
-}
-
-// use own pagination
-if (!function_exists('woocommerce_pagination')) {
-    // pagination
-    function woocommerce_pagination() {
-        tagdiv_page_generator::get_pagination();
-    }
-}
-
-if (!function_exists('woocommerce_output_related_products')) {
-    // Number of related products
-    function woocommerce_output_related_products() {
-        woocommerce_related_products(array(
-            'posts_per_page' => 4,
-            'columns' => 4,
-            'orderby' => 'rand',
-        )); // Display 4 products in rows of 1
-    }
-}
-
-
-
-
 
 /* ----------------------------------------------------------------------------
 * front end css files
@@ -339,6 +311,7 @@ add_action( 'comment_form_before', function() {
         wp_enqueue_script( 'comment-reply' );
     }
 });
+
 
 add_action('upgrader_process_complete', function($upgrader, $data) {
 

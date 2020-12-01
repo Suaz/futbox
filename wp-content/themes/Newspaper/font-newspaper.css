@@ -405,6 +405,9 @@ usage:
 .td-icon-log-out:before {
   content: "\e9de";
 }
+.td-icon-discord:before {
+  content: "\e9df";
+}
 .td-icon-dots-circle-big:before {
   content: "\e929";
 }
@@ -1057,4 +1060,7 @@ usage:
 }
 .td-social-icon-wrap:hover i.td-icon-flipboard {
   color: #f52828;
+}
+.td-social-icon-wrap:hover i.td-icon-discord {
+  color: #7289DA;
 }

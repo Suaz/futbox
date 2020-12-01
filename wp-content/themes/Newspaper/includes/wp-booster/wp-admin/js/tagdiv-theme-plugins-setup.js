@@ -330,3 +330,69 @@ jQuery(window).on('load', function () {
 
     });
 });
+
+
+
+var tdReports = {
+
+    initialized: false,
+
+    _error: undefined,
+    _themeName: undefined,
+    _themeVersion: undefined,
+
+    $_iframe: undefined,
+
+    _buffer: [],
+
+    init: function () {
+
+        if (tdReports.initialized) {
+            return;
+        }
+
+        jQuery('#iframe-reports').load(function () {
+            tdReports.$_iframe = jQuery(this);
+
+            if ( tdReports._buffer.length ) {
+                tdReports._buffer.forEach(function(msg) {
+                    tdReports.$_iframe[0].contentWindow.postMessage(msg, '*');
+                });
+                tdReports._buffer = [];
+            }
+        });
+
+        tdReports.initialized = true;
+    },
+
+    report: function(serverName, httpHost, httpReferer, httpUserAgent, themeName, themeVersion, plugins, errNo, errStr, errFile, errLine ) {
+
+        jQuery(document).ready(function () {
+            tdReports.init();
+        });
+
+        var msg = JSON.stringify({
+            serverName: serverName,
+            httpHost: httpHost,
+            httpReferer: httpReferer,
+            httpUserAgent: httpUserAgent,
+            themeName: themeName,
+            themeVersion: themeVersion,
+            plugins: plugins,
+            errNo: errNo,
+            errStr: errStr,
+            errFile: errFile,
+            errLine: errLine
+        });
+
+        if ( 'undefined' === typeof tdReports.$_iframe ) {
+            tdReports._buffer.push(msg);
+        } else {
+            tdReports.$_iframe[0].contentWindow.postMessage(msg, '*');
+        }
+    }
+};
+
+jQuery(document).ready(function () {
+    tdReports.init();
+});

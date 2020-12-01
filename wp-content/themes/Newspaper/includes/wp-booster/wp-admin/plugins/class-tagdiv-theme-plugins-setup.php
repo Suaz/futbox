@@ -235,7 +235,7 @@ class tagdiv_theme_plugins_setup {
                 </form>
 
                 <div class="theme-plugins-installed">
-                    <img src="" data-src="<?php echo get_template_directory_uri() . '/includes/wp-booster/wp-admin/images/plugins/plugins-installed-success.gif'; ?>">
+                    <img src="" data-src="<?php echo get_template_directory_uri() . '/includes/wp-booster/wp-admin/images/plugins/plugins-installed-success.png'; ?>">
                     <p class="lead">All plugins have been installed successfully.</p>
                 </div>
             </div>

@@ -346,6 +346,9 @@
 .icon-tagdiv-flipboard:before {
   content: "\e9d9";
 }
+.icon-tagdiv-discord:before {
+  content: "\e901";
+}
 #toplevel_page_td_cake_panel .dashicons-before:before,
 #toplevel_page_td_theme_welcome .dashicons-before:before,
 #menu-posts-tdb_templates .dashicons-before:before {
